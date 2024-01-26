@@ -1,17 +1,28 @@
-// this will output "this is variable using var" because var is gloabal scoped which means it can be used anywhere in the code.
-if (true) {
-    var varVariale = "this is variable using var";
-}
-console.log(varVariale);
+// FUNCTIONS AND TYPE OF FUNCTIONS IN JAVASCRIPT
 
-console.log(a);
-// this will output an error because "let" and "const" are block scoped. hence the interpreter doesnot recognise the letVariable outisde of the loop
-if(true){
-    let letVariable = "this is variable using let "
-}
-console.log(letVariable);
+// What is a Function in JavaScript?
+// In JavaScript, a function is a reusable block of code that can perform a specific task or return a value. 
 
+// NAMED FUNCTIONS :
+function add(num1,num2) {
+    return num1+num2 ;
+  }
+  
+let answer = add(4,56);
+console.log("answer = "+answer)
 
-// var can be redeclared and it wont be an issue. which causes mistakes in the code base.
-// const cannot be re-declared and the value cannot be changed 
-// let value can be changed 
+// ANONYMOUS FUNCTIONS: An anonymous function is defined without a name and can be assigned to a variable. It's often used as a callback function or within other functions
+let jodo = function (a, b) {
+    return a + b;
+  };
+  
+let result = jodo(3, 5);
+console.log(result); 
+
+// ARROW FUNCTIONS :
+const sum = (num1,num2) => num1 + num2;
+
+let sumValue = sum(20,50);
+console.log(sumValue); 
+
+  
