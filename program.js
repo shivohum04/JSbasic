@@ -1,28 +1,70 @@
-// FUNCTIONS AND TYPE OF FUNCTIONS IN JAVASCRIPT
+// ASYNC JAVASCRIPT 
+// 1. Callback functions 
+// 2. Promises
+// 3. Async and Await in JS
 
-// What is a Function in JavaScript?
-// In JavaScript, a function is a reusable block of code that can perform a specific task or return a value. 
-
-// NAMED FUNCTIONS :
-function add(num1,num2) {
-    return num1+num2 ;
+// CALLBACK FUNCTIONS : A callback function is a function that is passed as an argument to another function and is executed after that function has completed its task. 
+function greet(name, callback) {
+    console.log("Hello, " + name + "!");
+    callback(); 
   }
   
-let answer = add(4,56);
-console.log("answer = "+answer)
+function sayGoodbye() {
+    console.log("Goodbye!");
+  }
+greet("Alice", sayGoodbye);
 
-// ANONYMOUS FUNCTIONS: An anonymous function is defined without a name and can be assigned to a variable. It's often used as a callback function or within other functions
-let jodo = function (a, b) {
-    return a + b;
-  };
+// callback with setTimeout function 
+
+function delayedMessage(message, delay, callback) {
+    setTimeout(function () {
+      console.log(message);
+      callback(); 
+    }, delay);
+}
   
-let result = jodo(3, 5);
-console.log(result); 
+function sayThanks() {
+    console.log("Thanks for waiting!");
+}
+delayedMessage("Hello, world!", 2000, sayThanks);
 
-// ARROW FUNCTIONS :
-const sum = (num1,num2) => num1 + num2;
+// PROMISES
+// Promises have three states: pending, fulfilled (resolved) (then), or rejected (catch).
+function fetchData() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const data = { message: "Data fetched successfully!" };
+        resolve(data); 
+      }, 2000); 
+    });
+  }
 
-let sumValue = sum(20,50);
-console.log(sumValue); 
+fetchData()
+    .then((result) => {
+      console.log(result.message); 
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 
+// ASYNC and AWAIT 
+
+function fetcData() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const data = { message: "Data got successfully!" };
+        resolve(data);
+      }, 2000); 
+    });
+  }
+  
+  async function getData() {
+    try {
+      const result = await fetcData(); 
+      console.log(result.message); 
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  getData();
   
